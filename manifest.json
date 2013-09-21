@@ -1,6 +1,6 @@
 {
   "name": "npm home",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "manifest_version": 2,
   "description": "Redirect to a package's github page. Simulates original behaviour of `npm home`.",
   "content_scripts": [{
