@@ -1,13 +1,44 @@
 .npm-home-message {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: -12em;
+  height: 3em;
   width: 100%;
-  height: 2em;
-  padding: 1em 0;
   text-align: center;
+  transition-property: top;
+  transition-duration: 0.3s;
+  font-size: 0.9em;
 }
 
-.npm-home-message-content {
+.npm-home-message a {
+  white-space: nowrap;
+}
 
+.npm-home-message.visible {
+  top: -5em;
+  transition-property: top;
+  transition-duration: 0.3s;
+}
+
+#page > header {
+  position: relative;
+}
+
+.npm-home-message-inner {
+  position: relative;
+  line-height: 1.4em;
+  padding: 0.4em 1em;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  border: solid 1px rgb(221, 221, 221);
+  padding-right: 1.5em;
+}
+
+
+.npm-home-cancel {
+  position: absolute;
+  height: 1em;
+  top: 50%;
+  margin-top: -0.65em;
+  right: 0.5em;
+  word-wrap: normal
 }

@@ -16,28 +16,41 @@
   function nextDots() {
     return nextDots.dots.shift() || 0
   }
-  nextDots.dots = [2, 1, 0]
+  nextDots.dots = [3, 2, 1, 0]
   nextDots.current = 0
-  messageEl.innerHTML = '<strong>npm home</strong> is taking you directly to <a href="'+link+'">'+link+'</a> in <span class="npm-home-dots">3</span><br /><a class="npm-home-cancel" href="#">Cancel Redirect</a></div>'
+  messageEl.innerHTML = '<div class="npm-home-message-inner">Going&nbsp;to <a href="'+link+'">'+link+'</a>&nbsp;in&nbsp;<span class="npm-home-dots">3&hellip;</span><a class="npm-home-cancel" title="Cancel Redirect" href="#">&#10006;</a></div></div>'
   var dotsEl = messageEl.querySelector('.npm-home-dots')
 
+  var cancelled = false
+var dotsInterval
   var dotsInterval = setInterval(function() {
     var dots = nextDots()
-    dotsEl.innerText = dots
+    dotsEl.innerHTML = dots + '&hellip;'
     if (dots === 0) {
+      messageEl.classList.remove('visible')
       clearInterval(dotsInterval)
-      window.location.href = link
+      if (!cancelled) window.location.href = link
     }
   }, 1000)
 
-  document.body.appendChild(messageEl)
+  var wrap = document.body.querySelector('#wrap header')
+  wrap.insertBefore(messageEl, wrap.firstElementChild)
+  setTimeout(function() {
+    messageEl.classList.add('visible')
+  }, 0)
 
   messageEl.querySelector('.npm-home-cancel').addEventListener('click', function(e) {
     e.preventDefault()
+    cancelled = true
+
+    messageEl.firstElementChild.innerHTML = 'OK!'
+
     clearInterval(dotsInterval)
-    messageEl.innerText = 'OK!'
     setTimeout(function() {
-      document.body.removeChild(messageEl)
-    }, 1000)
+      messageEl.classList.remove('visible')
+      messageEl.addEventListener('transitioned', function() {
+        wrap.removeChild(messageEl)
+      })
+    }, 500)
   })
 })()
