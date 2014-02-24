@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "Redirect npm.org package pages directly to the package's home page.",
   "content_scripts": [{
-    "matches": ["https://www.npmjs.org/package/*"],
+    "matches": ["https://www.npmjs.org/package/*", "https://npmjs.org/package/*"],
     "run_at": "document_end",
     "js": ["index.js"],
     "css": ["style.css"]
@@ -14,5 +14,5 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "permissions": ["https://npmjs.org/package/*"]
+  "permissions": ["https://www.npmjs.org/package/*, https://npmjs.org/package/*"]
 }
