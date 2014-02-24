@@ -1,8 +1,8 @@
 {
   "name": "npm home",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "manifest_version": 2,
-  "description": "Redirect to a package's github page. Simulates original behaviour of `npm home`.",
+  "description": "Redirect npm.org package pages directly to the package's home page.",
   "content_scripts": [{
     "matches": ["https://www.npmjs.org/package/*"],
     "run_at": "document_end",
