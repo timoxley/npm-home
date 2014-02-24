@@ -1,14 +1,19 @@
 (function() {
   "use strict"
+
   var ths = [].slice.apply(document.querySelectorAll('th'))
   if (!ths) return
-    var th = ths.filter(function(el) { return /repository/gi.test(el.innerText) }).pop()
+
+  var th = ths.filter(function(el) { return /repository/gi.test(el.innerText) }).pop()
   if (!th) return
-    var td = th.nextSibling
+
+  var td = th.nextElementSibling
   if (!td) return
-    var a = td.querySelector('a')
+
+  var a = td.querySelector('a')
   if (!a) return
-    var link = a.href
+
+  var link = a.href
 
   var messageEl = document.createElement('div')
   messageEl.className = 'npm-home-message'
