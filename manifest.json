@@ -14,5 +14,5 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "permissions": ["tabs", "https://npmjs.org/package/*"]
+  "permissions": ["https://npmjs.org/package/*"]
 }
