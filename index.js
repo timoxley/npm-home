@@ -1,19 +1,13 @@
 (function() {
   "use strict"
 
-  var ths = [].slice.apply(document.querySelectorAll('th'))
-  if (!ths) return
+  var packageName = document.querySelector('.package-name a').text;
+  if (!packageName) return
 
-  var th = ths.filter(function(el) { return /repository/gi.test(el.innerText) }).pop()
-  if (!th) return
+  var publisher = document.querySelector('.last-publisher span').textContent;
+  if (!publisher) return
 
-  var td = th.nextElementSibling
-  if (!td) return
-
-  var a = td.querySelector('a')
-  if (!a) return
-
-  var link = a.href
+  var link = 'https://github.com/' + publisher + '/' + packageName;
 
   var messageEl = document.createElement('div')
   messageEl.className = 'npm-home-message'
